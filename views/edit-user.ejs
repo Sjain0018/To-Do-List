@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit User</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white p-10">
+    <a class="text-blue-500 inline-block mb-10" href="/ ">Go Back</a>
+    <form action="/edit-user" method="post" class="space-y-4">
+        <input type="hidden" name="oldName" value="<%= user %>">
+        <label class="block">
+            New User Folder Name:
+            <input class="mt-1 p-2 rounded bg-zinc-800 w-full" type="text" name="newName" placeholder="Enter new name" required>
+        </label>
+        <input class="bg-blue-600 px-4 py-2 rounded" type="submit" value="Rename User Folder">
+    </form>
+</body>
+</html>
