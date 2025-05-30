@@ -13,10 +13,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const USERS_DIR = path.join(__dirname, 'files');
 
+if (!fs.existsSync(USERS_DIR)) {
+    fs.mkdirSync(USERS_DIR, { recursive: true });
+}
+
 // user ko banana ka liya 
 app.get('/',function(req,res){
     fs.readdir(USERS_DIR, { withFileTypes: true }, (err, files) => {
         if (err) {
+            console.error("Error reading USERS_DIR:", err);  
             return res.status(500).send('Unable to read users.');
         }
         const userFolders = files
